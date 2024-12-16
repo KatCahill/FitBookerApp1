@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+     <!-- FitBooker Logo or Name -->
+     <div class="logo-container">
+        <img src="/images/logo.png"  alt="FitBooker Logo" class="logo">
+    </div>
+    
+    <section>
+        <!-- Display error message from Spring Security if any -->
+        <div class="dialog-row">
+            <label th:if="${param.error}" th:text="'Wrong username or password. Try again.'" class="text-center redText"></label>
+        </div>
+   
+        <!-- Login Form -->
+        <form action="/login" method="post">
+            <h1>Login</h1>
+            <div class="inputbox">
+                <ion-icon name="email-outline"></ion-icon>
+                <input name="username" type="text" id="username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="inputbox">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input name="password" type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="register">
+                <p><a href="#">Forget Password?</a></p>
+            </div>
+            <button type="submit">Log in</button>
+            <div class="register">
+                <p>Don't have an account? <a href="/signup">Register!</a></p>
+            </div>
+        </form>
+    </section>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const errorMessage = document.querySelector('.dialog-row .redText');
+            
+            if (errorMessage) {
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';  // Hide the error message after 3 seconds
+                }, 3000);
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>

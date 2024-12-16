@@ -1,0 +1,31 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+
+spring:
+  datasource:
+    password: new_password  # Set your MySQL password here
+    url: jdbc:mysql://localhost:3306/registration  # MySQL URL, change 'registration' to your database name
+    username: root  # Set your MySQL username here
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # This will update your schema automatically; change it if needed
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect  # Correct dialect for Hibernate 6
+        format_sql: true
+    show-sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: FitBookerApp@gmail.com  # Your Gmail address
+    password: bozf nquf diju bysb  # Your Gmail password or App password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true

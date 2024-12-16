@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitBookerApp - Your Gym Booking Partner</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hero {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://cdn-magazine.nutrabay.com/wp-content/uploads/2023/02/strong-bodybuilder-doing-heavy-weight-exercise-back-machine-1-1067x800.jpg') center/cover no-repeat;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        .hero .btn {
+            margin-top: 2rem;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+        }
+        .footer {
+            background: #222;
+            color: #ccc;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            color: #fff;
+        }
+        .icon-box {
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-img-top {
+            height: 200px; 
+            object-fit: cover; 
+            width: 100%;
+            border-radius: 0; 
+        }
+
+        form {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        form button {
+            width: 100%;
+        }
+
+
+        #successMessage, #errorMessage {
+            max-width: 300px;
+             margin: 0 auto 20px auto; 
+        } 
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+        <a class="navbar-brand" href="#">FitBookerApp</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Classes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="yoga.html">Yoga</a></li>
+                        <li><a class="dropdown-item" href="hiit.html">HIIT</a></li>
+                        <li><a class="dropdown-item" href="zumba.html">Zumba</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/bookings">Bookings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<!-- Hero Section -->
+<div class="hero">
+    <h1>Transform Your Fitness Journey</h1>
+    <p>Join FitBookerApp today and book the best gym sessions tailored to your goals.</p>
+    <a href="#classes" class="btn btn-primary btn-lg shadow">Explore Classes</a>
+</div>
+
+<!-- Featured Classes Section -->
+<div id="classes" class="container py-5">
+    <h2 class="text-center mb-5">Our Popular Classes</h2>
+    <div class="row g-4">
+        <div class="col-md-4 fade-up">
+            <div class="card">
+                <img src="https://www.byrdie.com/thmb/8tLoxfMg7yfifeJQj5kNC7p0MXc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/yogapose-4a62b2a4d57e4f61a4885003b2e0c47b.jpg" class="card-img-top" alt="Yoga Class">
+                <div class="card-body">
+                    <h5 class="card-title">Yoga</h5>
+                    <p class="card-text">Relax your mind and strengthen your body with our expert-led yoga classes.</p>
+                    <a href="yoga.html" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 fade-up">
+            <div class="card">
+                <img src="https://media.self.com/photos/5c10255b2f04d8625a2fbb64/master/pass/women-with-dumbbells.jpg" class="card-img-top" alt="HIIT Class">
+                <div class="card-body">
+                    <h5 class="card-title">HIIT</h5>
+                    <p class="card-text">Push your limits with our high-intensity interval training sessions.</p>
+                    <a href="hiit.html" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 fade-up">
+            <div class="card">
+                <img src="https://justdance.ie/wp-content/uploads/2020/11/women-sportswear-zumba-dance-class-min-scaled.jpg" class="card-img-top" alt="Zumba Class">
+                <div class="card-body">
+                    <h5 class="card-title">Zumba</h5>
+                    <p class="card-text">Dance your way to fitness with our fun-filled Zumba sessions.</p>
+                    <a href="zumba.html" class="btn btn-outline-primary">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- About Section -->
+<div id="about" class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">About Us</h2>
+        
+        <!-- Image of the two sisters -->
+        <div class="text-center mb-4">
+            <img src="https://flux-image.com/_next/image?url=https%3A%2F%2Fai.flux-image.com%2Fflux%2Ffaf6e23b-3028-4bdc-aced-2fa62387701a.jpg&w=3840&q=75" alt="Founders" class="img-fluid rounded-circle" style="max-width: 300px;">
+        </div>
+
+        <!-- About Us Paragraph -->
+        <p style="text-align: justify; text-indent: 30px;">
+            Welcome to FitBookerApp, a cozy and welcoming fitness space founded by two passionate sisters, Jenna and Katie Myers, in 2021. What started as a dream to create a community-driven gym quickly grew into a local hub for fitness lovers of all kinds.
+            
+            Our mission is simple: to provide a personalized fitness experience that makes every member feel seen, supported, and motivated. At FitBookBookeApp, we believe that fitness isn’t just about lifting weights – it’s about lifting spirits, building confidence, and creating a space where everyone feels at home.
+
+            With a focus on flexibility, accessibility, and community, we offer a range of gym classes designed to fit all levels, from beginners to seasoned athletes. Our goal is to help you discover your inner strength, crush your fitness goals, and, most importantly, have fun along the way!
+a
+            What drives us every day is the belief that fitness should be for everyone, no matter where they start. We’re here to make your fitness journey enjoyable, challenging, and, above all, empowering.
+
+            Come join us at FitBookerApp – where fitness meets family, and every step forward is a step toward a stronger, healthier you!
+        </p>
+    </div>
+</div>
+
+<!-- Contact Us Section -->
+<div id="contact" class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <p class="text-center">We'd love to hear from you! Fill out the form below to get in touch.</p>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="alert alert-success text-center" style="display: none;">
+            Message sent successfully!
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="alert alert-danger text-center" style="display: none;">
+            Failed to send the message. Please try again later.
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Your Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Your Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Google Maps API Script -->
+<div class="container my-5">
+    <h2 class="text-center mb-4">This is where you can find us!</h2>
+    <div id="map" style="height: 400px; width: 100%; border: 1px solid #ddd; border-radius: 10px;"></div>
+</div>
+
+<script>
+    function initMap() {
+
+        // Sets the map options
+        const options = {
+            center: { lat: 52.0574, lng: -9.5085 }, // coordinates of gym location
+            zoom: 14
+        };
+
+        // Creates the map
+        const map = new google.maps.Map(document.getElementById("map"), options);
+
+        // Adds a marker
+        const marker = new google.maps.Marker({
+            position: { lat: 52.0574, lng: -9.5085 }, // Replace actual marker coordinates
+            map: map,
+            title: "FitBookerApp - Our Location"
+        });
+    }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAcyjHtoBn80a3KUkYeSkDKLtCchhAlKA4&callback=initMap"></script>
+
+<!-- JavaScript -->
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        // Collect form data
+        const formData = new FormData(this);
+
+        // Display messages
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        try {
+            // Send data to the backend using Fetch API
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                body: formData, // Automatically includes all form fields
+            });
+
+            if (response.ok) {
+                // Show success message
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+
+                // Reset the form
+                this.reset();
+            } else {
+                throw new Error('Failed to send message');
+            }
+        } catch (error) {
+            // Show error message
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'block';
+
+            // Hide error message after 3 seconds
+            setTimeout(() => {
+                errorMessage.style.display = 'none';
+            }, 3000);
+        }
+    });
+</script>
+
+
+
+<!-- Footer -->
+<footer class="footer py-4">
+    <div class="container text-center">
+        <p class="mb-2">© 2024 FitBookerApp. All rights reserved.</p>
+        <p>
+            <a href="#contact">Contact Us</a> | <a href="#about">About</a>
+        </p>
+    </div>
+</footer>
+
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Scroll animation
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    });
+
+    document.querySelectorAll('.fade-up').forEach(element => {
+        observer.observe(element);
+    });
+</script>
+
+</body>
+</html>
